@@ -34,11 +34,9 @@ public class JwtService {
                         .and()
                         .signWith(getKey())
                         .compact();
-
     }
 
     public String getEmailFromToken(String token) {
-        // extract the username from jwt token
         return extractClaim(token, Claims::getSubject);
     }
 

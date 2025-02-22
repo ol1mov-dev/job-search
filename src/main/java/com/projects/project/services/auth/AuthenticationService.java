@@ -1,5 +1,6 @@
 package com.projects.project.services.auth;
 
+import com.projects.project.commons.Role;
 import com.projects.project.controllers.requests.auth.AuthenticateUserRequest;
 import com.projects.project.controllers.requests.auth.RegisterUserRequest;
 import com.projects.project.controllers.responses.auth.JwtResponse;
@@ -28,7 +29,7 @@ public class AuthenticationService {
     private PasswordEncoder passwordEncoder;
 
     public ResponseEntity<JwtResponse> register(RegisterUserRequest request) {
-        User currentUser = userRepository.save(
+        userRepository.save(
                 User
                     .builder()
                     .firstName(request.firstname())
@@ -37,6 +38,7 @@ public class AuthenticationService {
                     .password(
                             passwordEncoder.encode(request.password())
                     )
+                    .role(Role.ADMIN)
                     .build()
         );
 

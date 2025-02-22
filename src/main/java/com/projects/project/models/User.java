@@ -1,5 +1,6 @@
 package com.projects.project.models;
 
+import com.projects.project.commons.Role;
 import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.security.core.CredentialsContainer;
@@ -35,6 +36,9 @@ public class User implements UserDetails, CredentialsContainer {
     @NonNull
     private String password;
 
+    @Enumerated(EnumType.STRING)
+    private Role role;
+
     @Override
     public void eraseCredentials() {
 
@@ -42,7 +46,7 @@ public class User implements UserDetails, CredentialsContainer {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return List.of();
+        return role.getGrantedAuthorities();
     }
 
     @Override
