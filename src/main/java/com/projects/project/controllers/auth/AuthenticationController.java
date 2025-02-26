@@ -4,6 +4,7 @@ import com.projects.project.controllers.requests.auth.AuthenticateUserRequest;
 import com.projects.project.controllers.requests.auth.RegisterUserRequest;
 import com.projects.project.controllers.responses.auth.JwtResponse;
 import com.projects.project.services.auth.AuthenticationService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -22,11 +23,11 @@ public class AuthenticationController {
 
     @PostMapping("/register")
     public ResponseEntity<JwtResponse> register(
-            @RequestBody RegisterUserRequest request
+            @Valid @RequestBody RegisterUserRequest request
     ) { return authenticationService.register(request); }
 
     @PostMapping
     public ResponseEntity<JwtResponse> authenticate(
-            @RequestBody AuthenticateUserRequest request
+            @Valid @RequestBody AuthenticateUserRequest request
     ){ return authenticationService.authenticate(request);}
 }

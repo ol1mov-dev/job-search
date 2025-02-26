@@ -1,9 +1,10 @@
 package com.projects.project.commons;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.RequiredArgsConstructor;
 
-@RequiredArgsConstructor
+@Getter
+@AllArgsConstructor
 public enum Permission {
 
     CAN_READ_POST("can:read-post"),
@@ -11,6 +12,5 @@ public enum Permission {
     CAN_DELETE_POST("can:delete-post"),
     CAN_ADD_POST("can:delete-post");
 
-    @Getter
-    public final String permission;
+    private final String permission;
 }

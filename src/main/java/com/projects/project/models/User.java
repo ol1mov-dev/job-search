@@ -2,6 +2,7 @@ package com.projects.project.models;
 
 import com.projects.project.commons.Role;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
 import lombok.*;
 import org.springframework.security.core.CredentialsContainer;
 import org.springframework.security.core.GrantedAuthority;
@@ -36,8 +37,14 @@ public class User implements UserDetails, CredentialsContainer {
     @NonNull
     private String password;
 
+//    @NonNull
+//    private String phone;
+
     @Enumerated(EnumType.STRING)
     private Role role;
+
+//    @NonNull
+//    private Boolean isDeleted = false;
 
     @Override
     public void eraseCredentials() {

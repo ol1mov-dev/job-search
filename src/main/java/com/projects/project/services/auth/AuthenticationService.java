@@ -6,6 +6,7 @@ import com.projects.project.controllers.requests.auth.RegisterUserRequest;
 import com.projects.project.controllers.responses.auth.JwtResponse;
 import com.projects.project.models.User;
 import com.projects.project.repositories.UserRepository;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -28,7 +29,7 @@ public class AuthenticationService {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
-    public ResponseEntity<JwtResponse> register(RegisterUserRequest request) {
+    public ResponseEntity<JwtResponse> register(@Valid RegisterUserRequest request) {
         userRepository.save(
                 User
                     .builder()
