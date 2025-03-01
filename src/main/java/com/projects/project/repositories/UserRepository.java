@@ -1,6 +1,6 @@
 package com.projects.project.repositories;
 
-import com.projects.project.models.User;
+import com.projects.project.entities.User;
 import lombok.NonNull;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;

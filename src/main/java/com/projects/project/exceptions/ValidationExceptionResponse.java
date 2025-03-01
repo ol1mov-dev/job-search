@@ -12,7 +12,7 @@ import java.util.Map;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class ValidationException{
+public class ValidationExceptionResponse {
     private String message;
     private Map<String, String> details;
     LocalDateTime timestamp = LocalDateTime.now();

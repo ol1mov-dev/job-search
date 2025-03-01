@@ -4,7 +4,7 @@ import com.projects.project.commons.Role;
 import com.projects.project.controllers.requests.auth.AuthenticateUserRequest;
 import com.projects.project.controllers.requests.auth.RegisterUserRequest;
 import com.projects.project.controllers.responses.auth.JwtResponse;
-import com.projects.project.models.User;
+import com.projects.project.entities.User;
 import com.projects.project.repositories.UserRepository;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -39,6 +39,7 @@ public class AuthenticationService {
                     .password(
                             passwordEncoder.encode(request.password())
                     )
+                    .phone(request.phone())
                     .role(Role.ADMIN)
                     .build()
         );

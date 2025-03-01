@@ -16,8 +16,8 @@ public class SecurityConfiguration {
 
     private final JwtFilter jwtFilter;
     private final String[] requestMatchers = {
-            "/api/v1/auth/register",
-            "/api/v1/auth/authenticate"
+            "/api/v1/register",
+            "/api/v1/authenticate"
     };
 
     public SecurityConfiguration(JwtFilter jwtFilter) {

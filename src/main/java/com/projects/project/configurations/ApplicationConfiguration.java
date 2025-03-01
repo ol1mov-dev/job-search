@@ -1,7 +1,6 @@
 package com.projects.project.configurations;
 
 import com.projects.project.repositories.UserRepository;
-import com.projects.project.services.ValidationService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -44,10 +43,5 @@ public class ApplicationConfiguration {
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
-    }
-
-    @Bean
-    public ValidationService validationService() {
-        return new ValidationService();
     }
 }

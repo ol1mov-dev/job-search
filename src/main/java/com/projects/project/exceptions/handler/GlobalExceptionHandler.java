@@ -1,6 +1,6 @@
 package com.projects.project.exceptions.handler;
 
-import com.projects.project.exceptions.ValidationException;
+import com.projects.project.exceptions.ValidationExceptionResponse;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -32,14 +32,14 @@ public class GlobalExceptionHandler {
     @ResponseBody
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ExceptionHandler(MethodArgumentNotValidException.class)
-    public ResponseEntity<ValidationException> handleBadRequests(MethodArgumentNotValidException ex)  {
+    public ResponseEntity<ValidationExceptionResponse> handleBadRequests(MethodArgumentNotValidException ex)  {
         Map<String, String> errors = new HashMap<>();
 
         ex.getBindingResult().getFieldErrors().forEach(error ->
                 errors.put(error.getField(), error.getDefaultMessage())
         );
 
-        ValidationException errorResponse = ValidationException
+        ValidationExceptionResponse errorResponse = ValidationExceptionResponse
                                             .builder()
                                             .message(ex.getMessage())
                                             .details(errors)
